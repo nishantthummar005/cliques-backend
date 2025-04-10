@@ -1,13 +1,13 @@
 const connectToMongo = require('./db'); 
 const express = require('express');
 var cors = require('cors')
-// require('dotenv').config();
+require('dotenv').config(); 
 
 connectToMongo();
 const app = express()
  
 app.use(cors())
-const port = 3100
+const port = process.env.PORT || 3100;
 
 app.use(express.json());   // middleware for use of request body - If you want to use request body then you have to include it.
 

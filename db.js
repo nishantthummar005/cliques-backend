@@ -1,8 +1,13 @@
 const mongoose = require('mongoose');
-const mongoCloudUri = "mongodb+srv://sauravchaudhary3355:qmmdOIn38McXTWaF@cliques-db.8uor3.mongodb.net/cliques"
+const mongoCloudUri = process.env.MONGO_URI;
+
 const connectToMongo = () => {
-    mongoose.connect(mongoCloudUri, () => {
-        console.log("Connected to mongoDB successfully.")
-    })
-}
-module.exports = connectToMongo
+    mongoose.connect(mongoCloudUri, {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+    }, () => {
+        console.log("Connected to mongoDB successfully.");
+    });
+};
+
+module.exports = connectToMongo;
